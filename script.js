@@ -1,6 +1,6 @@
 // Initialize Supabase
-const SUPABASE_URL = 'https://your-project-id.supabase.co'; // Replace this
-const SUPABASE_KEY = 'your-anon-key'; // Replace this
+const SUPABASE_URL = 'https://mywotdmfnuewctbanedi.supabase.co'; // Replace this
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im15d290ZG1mbnVld2N0YmFuZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwMjA5ODIsImV4cCI6MjA2MzU5Njk4Mn0.81yT4CRzXsHvqFh7g_DE3dsXcqRAN-gzai5KEStXPvk'; // Replace this
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const form = document.getElementById("receiptForm");
