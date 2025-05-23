@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receipt Uploader</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🧾 Receipt Uploader</h1>
+      <p class="subtitle">Organize your receipts effortlessly. Upload, categorize, and track them in one place.</p>
+    </header>
+
+    <main>
+      <form id="receiptForm">
+        <input type="file" id="receiptFile" accept="image/*,.pdf" required />
+
+        <select id="category" required>
+          <option value="">Select a category</option>
+          <option value="Travel">Travel</option>
+          <option value="Food">Food</option>
+          <option value="Office">Office Supplies</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <input type="date" id="receiptDate" required />
+        <input type="text" id="notes" placeholder="Notes (optional)" />
+        <button type="submit">Upload</button>
+      </form>
+
+      <h2>📋 Your Receipts</h2>
+      <table id="receiptTable">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p>© 2025 Receipt Uploader | Built with ❤️ by Abderraouf Lamri (more like ChatGPT 😉)</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
