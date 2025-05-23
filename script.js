@@ -3,7 +3,7 @@ const tableBody = document.querySelector("#receiptTable tbody");
 const searchInput = document.getElementById("searchInput");
 const exportBtn = document.getElementById("exportBtn");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const file = document.getElementById("receiptFile").files[0];
@@ -14,7 +14,7 @@ form.addEventListener("submit", (e) => {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = function () {
+  reader.onload = async function () {
     const receipt = {
       filename: file.name,
       dataUrl: reader.result,
@@ -22,6 +22,25 @@ form.addEventListener("submit", (e) => {
       date,
       notes
     };
+
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from("receipts")
+      .insert([receipt]);
+
+    if (error) {
+      console.error("Upload to Supabase failed:", error);
+      alert("❌ Upload failed. Check console for details.");
+      return;
+    }
+
+    alert("✅ Receipt uploaded!");
+    loadReceipts(); // Refresh from Supabase
+    form.reset();
+  };
+
+  reader.readAsDataURL(file);
+});
 
     let receipts = JSON.parse(localStorage.getItem("receipts") || "[]");
     receipts.push(receipt);
