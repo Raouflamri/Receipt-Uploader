@@ -44,8 +44,18 @@ function addToTable(receipt) {
   tableBody.appendChild(row);
 }
 
-function loadReceipts() {
-  const receipts = JSON.parse(localStorage.getItem("receipts") || "[]");
+async function loadReceipts() {
+  const { data: receipts, error } = await supabase
+    .from("receipts")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Failed to fetch receipts:", error);
+    return;
+  }
+
+  tableBody.innerHTML = ""; // Clear previous rows
   receipts.forEach(addToTable);
 }
 
